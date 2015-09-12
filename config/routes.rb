@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  resources :guests
   resources :rooms
   root 'pages#home'
 
   get 'pages/home'
-
+  get 'messages/new'
 
 
   devise_for :users
