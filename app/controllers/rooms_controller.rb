@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
 
-    before_filter :authenticate_user!
     def create
     end
 
     def new
         @room = current_user.rooms.build()
+        @message = Message.new
+        @messages = Message.order('created_at DESC')
         if @room.save
             redirect_to room_path(@room)
         end
@@ -16,6 +17,10 @@ class RoomsController < ApplicationController
     end
 
     def show
+    end
+
+    def guest
+      session[:username] = User.find_by_username(params[:username]) if params[:username]
     end
 
     # private

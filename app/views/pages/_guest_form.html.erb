@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <h1>New Guest creation</h1>
 
-<%= form_for(@guest) do |f| %>
+<%= form_for(User.new, url: rooms_guest_path) do |f| %>
 
     <div class="field">
         <%= f.text_area :username, placeholder: "Enter username", class:"form-conrol" %>

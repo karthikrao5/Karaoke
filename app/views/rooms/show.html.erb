@@ -3,11 +3,21 @@
 
 <div class="chat_container">
   <div id="room">
-    <p class="alert"> Welcome to the chat room <%= current_user[:user_id] %>! </p>
+    <p class="alert"> Welcome to the chat room! </p>
   </div>
 
-  <form id="new_message_form">
-    <input type="text" id="message" name="message">
-    <input type="submit" value="Send">
-  </form>
+  <% if guest_user %>
+      <div class="page-header">
+        <h1>Join the discussion!</h1>
+      </div>
+
+      <%= render 'form' %>
+      <div class="panel panel-default" id="messages">
+        <div class="panel-body">
+          <ul class="media-list">
+            <%= render @messages %>
+          </ul>
+        </div>
+      </div>
+  <% end %>
 </div>

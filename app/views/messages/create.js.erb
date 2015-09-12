@@ -1,0 +1,6 @@
+<% if @message.new_record? %>
+alert('Your comment cannot be saved.');
+<% else %>
+$('#messages').find('.media-list').prepend('<%= j render @message %>');
+$('#messages_body').val('');
+<% end %>

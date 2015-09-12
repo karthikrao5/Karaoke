@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :guests
   resources :rooms
   root 'pages#home'
 
   get 'pages/home'
   get 'messages/new'
+  post 'rooms/guest'
+  resources :comments, only: [:new, :create]
 
 
   devise_for :users
